@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorry I Love You</title>
+    <style>
+        body {
+            background: #ffe6e6;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #a00;
+            overflow: hidden;
+            padding-top: 50px;
+        }
+
+        h1 {
+            font-size: 48px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1);}
+            50% { transform: scale(1.1);}
+            100% { transform: scale(1);}
+        }
+
+        .lyrics {
+            margin-top: 20px;
+            font-size: 28px;
+            animation: fade 3s infinite;
+        }
+
+        @keyframes fade {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 40px;
+            animation: float 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-50px) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sorry I Love You</h1>
+
+    <div class="lyrics">
+        <p>Sorry I Love You</p>
+        <p>Sorry I Love You</p>
+        <p>Sorry I Love You</p>
+    </div>
+
+    <!-- تشغيل الصوت -->
+     <button onclick="document.querySelector('audio').play()">Play Music</button>
+    <audio src="song.mp3" autoplay loop></audio>
+
+    <script>
+        const emojis = ["😭", "😢"];
+        function createEmoji() {
+            const emoji = document.createElement("div");
+            emoji.classList.add("emoji");
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * window.innerWidth + "px";
+            emoji.style.fontSize = 30 + Math.random() * 30 + "px";
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 5000);
+        }
+        setInterval(createEmoji, 500);
+    </script>
+
+</body>
+</html>
+
